@@ -33,23 +33,20 @@ const run = async  () => {
             res.send(products);
         })
 
+
+        app.get('/productCount',async(req,res)=>{
+            const query = {};
+            const cursor = productCollection.find(query);
+            const count = await cursor.count();
+            res.send({count});
+        })
+
     } finally { 
 
     }
 }
 
 run().catch(console.dir)
-
-
-
-
-// client.connect(err => {
-  
-//   // perform actions on the collection object
-//   console.log('db connected')
-//   client.close();
-// });
-
 
 
 app.get('/',(req,res)=>{
