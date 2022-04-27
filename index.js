@@ -48,9 +48,8 @@ const run = async () => {
 
 
     app.post('/productKeys',async(req,res) => {
-        console.log(req.body);
         const keys = req.body;
-        const ids = keys.map((id) => ObjectId(id))
+        const ids = keys.map((id) => ObjectId(id));
         const query = {_id:{$in : ids}};
         const cursor = productCollection.find(query);
         const products = await cursor.toArray();
